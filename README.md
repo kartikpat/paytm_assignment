@@ -19,6 +19,7 @@ Please find best practices for the project-:
   2. Server side rendering using renderToNodeStream
   3. Responsive
   4. Using key on react elements for large lists
+  5. SEO best practices, like adding meta title, description, viewport and alt for images
  
 Screenshots for light house are attached in the email.
 
