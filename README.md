@@ -3,7 +3,7 @@
 For running the project-: 
 
 1. npm install
-2. npm run dev -> server side react application on localhost:3006
+2. npm run prod -> server side react application on localhost:3006
 
 Stack used-: 
   React, Redux, Redux-Thunk, axios, webpack, babel, Express, Node 14.3.0, react-router
