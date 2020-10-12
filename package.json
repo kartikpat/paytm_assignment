@@ -8,7 +8,12 @@
     "dev:build-client": "webpack --config webpack.client.js --mode development",
     "dev:start": "nodemon ./server-build/index.js",
     "dev": "npm run dev:build-client && npm run dev:build-server && npm run dev:start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prod:build-server": "NODE_ENV=development webpack --config webpack.server.js --mode=production",
+    "prod:build-client": "webpack --config webpack.client.js --mode production",
+    "prod:start": "nodemon ./server-build/index.js",
+    "prod": "npm run prod:build-client && npm run prod:build-server && npm run prod:start"
+
   },
   "author": "",
   "license": "ISC",
