@@ -1,8 +1,8 @@
 import React from "react";
-import ImageUploader from "../../components/ImageUploader";
+import SpaceXLaunches from "../../components/SpaceXLaunches";
 
 const Home = ({}) => (
-    <ImageUploader></ImageUploader>
+    <SpaceXLaunches></SpaceXLaunches>
 )
 
 export default Home;

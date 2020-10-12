@@ -1,5 +1,5 @@
-import imageUploader from "../../components/ImageUploader/reducer";
+import spaceXLaunches from "../../components/SpaceXLaunches/reducer";
 
 export const rootReducer = {
-    imageUploader
+    spaceXLaunches
 }
