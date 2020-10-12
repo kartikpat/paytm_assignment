@@ -6,12 +6,12 @@
   "scripts": {
     "dev:build-server": "NODE_ENV=development webpack --config webpack.server.js --mode=development",
     "dev:build-client": "webpack --config webpack.client.js --mode development",
-    "dev:start": "nodemon ./server-build/index.js",
+    "dev:start": "nodemon ./build/index.js",
     "dev": "npm run dev:build-client && npm run dev:build-server && npm run dev:start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prod:build-server": "NODE_ENV=development webpack --config webpack.server.js --mode=production",
     "prod:build-client": "webpack --config webpack.client.js --mode production",
-    "start": "nodemon ./build/index.js",
+    "start": "node ./build/index.js",
     "prod": "npm run prod:build-client && npm run prod:build-server",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build"
   },
