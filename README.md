@@ -8,7 +8,7 @@ For running the project-:
 4. npm run start -> server side react application on localhost:3006
 
 Stack used-: 
-  React, Redux, Redux-Thunk, axios, webpack, babel, Express, Node 14.3.0, react-router
+  React, Redux, Redux-Thunk, axios, webpack, babel, Express, No-> server side react application on localhost:3006de 14.3.0, react-router
 
 Functionalities-: 
   1. The initial launch programs landing page is server-side-rendered.
@@ -18,6 +18,7 @@ Please find best practices for the project-:
   1. Lazy loading of images
   2. Server side rendering using renderToNodeStream
   3. Responsive
+  4. Using key on react elements for large lists
  
 Screenshots for light house are attached in the email.
 
