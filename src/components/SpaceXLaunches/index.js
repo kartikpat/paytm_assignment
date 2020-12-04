@@ -1,9 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
-import {onClickSelectFilter} from "./action";
+import React, {memo} from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
-import LaunchCard from "./LaunchCard";
-import Filter from "./Filter";
+import LaunchCard from './LaunchCard';
+import Filter from './Filter';
 
 const Container = styled.div`
     display: flex;
@@ -27,35 +26,30 @@ const CardContainer = styled.div`
     }
 `;
 
-const Heading = styled.h1`
+const Heading = memo(styled.h1`
     margin: 20px auto;
     padding-left: 20px;
     max-width: 1440px;
-`;
+`);
 
-const SpaceXLaunches = ({ launches, alertMsg, onFilterPillClick, selectedFilters }) => {
-   return ( 
-    <>
-        <Heading>SpaceX Launch Programs</Heading>
-        <Container>
-            <Filter onFilterPillClick={(filterId, filterValue) => onFilterPillClick(filterId, filterValue)} selectedFilters={selectedFilters}></Filter>
-            <CardContainer>
-                {launches?.length ? launches.map((launch) => <LaunchCard launch={launch} key={launch.flight_number}></LaunchCard>): 'No Data'}
-                {alertMsg && alert(alertMsg) }        
-            </CardContainer>
-        </Container>
-    </>
-    )
-}
+const SpaceXLaunches = ({
+  launches, alertMsg,
+}) => (
+  <>
+    <Heading>SpaceX Launch Programs</Heading>
+    <Container>
+      <Filter />
+      <CardContainer>
+        {launches?.length ? launches.map((launch) => <LaunchCard launch={launch} key={launch.flight_number} />) : 'No Data'}
+        {alertMsg && alert(alertMsg) }
+      </CardContainer>
+    </Container>
+  </>
+);
 
-const mapStateToProps = state => ({
-    alertMsg: state.spaceXLaunches.alertMsg,
-    launches: state.spaceXLaunches.launches,
-    selectedFilters: state.spaceXLaunches.selectedFilters
+const mapStateToProps = (state) => ({
+  alertMsg: state.spaceXLaunches.alertMsg,
+  launches: state.spaceXLaunches.launches,
 });
 
-const mapDispatchToProps = dispatch => ({
-    onFilterPillClick: (id, value) => dispatch(onClickSelectFilter(id, value)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(SpaceXLaunches);
+export default connect(mapStateToProps, null)(SpaceXLaunches);

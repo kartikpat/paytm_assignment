@@ -1,7 +1,10 @@
-import React from "react";
+import React from 'react';
 import styled from 'styled-components';
-import { FILTERS } from "../constants";
-import FilterPill from "../../UIComponents/FilterPill";
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { FILTERS } from '../constants';
+import FilterPill from '../../UIComponents/FilterPill';
+import { onClickSelectFilter } from '../action';
 
 const Container = styled.div`
     display: flex;
@@ -39,23 +42,36 @@ const ValueRow = styled.div`
 `;
 
 const Filter = ({ onFilterPillClick, selectedFilters }) => (
-    <Container>
-        <Heading>Filters</Heading>
-        {FILTERS.map((filter, idx) => (
-            <div key={idx}>
-                <Label>{filter.label}</Label>
-                {filter.values.reduce((valueRows, key, index) => 
-                    (index % 2 == 0 ? valueRows.push([key]) : valueRows[valueRows.length-1].push(key)) && valueRows, [])
-                    .map((valueRow, index) => (
-                        <ValueRow key={index}>
-                            {valueRow.map((value, id) => (
-                                <FilterPill key={id} selected={selectedFilters[filter.id] ? selectedFilters[filter.id] === value : false} label={value} onClick={() => onFilterPillClick(filter.id, value)}/>
-                            ))}
-                        </ValueRow>
-                ))}
-            </div>
-        ))}
-    </Container>
-)
+  <Container>
+    <Heading>Filters</Heading>
+    {FILTERS.map((filter) => (
+      <div key={filter.id}>
+        <Label>{filter.label}</Label>
+        {filter.values.reduce((valueRows, key, index) => (index % 2 === 0
+          ? valueRows.push([key]) : valueRows[valueRows.length - 1].push(key)) && valueRows, [])
+          .map((valueRow, index) => (
+            <ValueRow key={index}>
+              {valueRow.map((value, id) => (
+                <FilterPill key={id} selected={selectedFilters[filter.id] ? selectedFilters[filter.id] === value : false} label={value} onClick={() => onFilterPillClick(filter.id, value)} />
+              ))}
+            </ValueRow>
+          ))}
+      </div>
+    ))}
+  </Container>
 
-export default Filter;
+);
+
+Filter.propTypes = {
+  selectedFilters: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  selectedFilters: state.spaceXLaunches.selectedFilters,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onFilterPillClick: (id, value) => dispatch(onClickSelectFilter(id, value)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);
