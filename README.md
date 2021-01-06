@@ -1,4 +1,4 @@
-# publicis_sapient_assignment(SERVER SIDE RENDERED)
+# react_boiler(SERVER SIDE RENDERED)
 
 For running the project-: 
 
