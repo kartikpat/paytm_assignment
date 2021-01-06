@@ -8,7 +8,7 @@ For running the project-:
 4. npm run start -> server side react application on localhost:3006
 
 Stack used-: 
-  React, Redux, Redux-Thunk, axios, webpack, babel, Express, No-> server side react application on localhost:3006de 14.3.0, react-router
+  React, Redux, Redux-Thunk, axios, webpack, babel, Express, server side react application on localhost:3006, react-router
 
 Functionalities-: 
   1. The initial launch programs landing page is server-side-rendered.
