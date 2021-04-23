@@ -1,4 +1,4 @@
-import Home from '../containers/Home/index';
+import Home from '../containers/Home/index.jsx';
 import {getLaunches} from '../components/SpaceXLaunches/action';
 
 const Routes = [
@@ -6,7 +6,7 @@ const Routes = [
       path: '/',
       exact: true,
       component: Home,
-      loadData: (dispatch) => dispatch(getLaunches({}))
+      loadData: dispatch => dispatch(getLaunches({}))
     }
 ];
 

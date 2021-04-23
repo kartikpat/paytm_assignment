@@ -1,4 +1,4 @@
-export default ({  appStream, title, preloadedState, res  }) => {
+export default ({ appStream, title, preloadedState, res }) => {
     res.write(`<html lang="en">
         <head>
         <meta charset="utf-8">
@@ -7,21 +7,15 @@ export default ({  appStream, title, preloadedState, res  }) => {
         <title>${title}</title>
         </head>
         <body>
-        <div id="root">`
-    );
-    appStream.pipe(
-        res,
-        { end: false },
-    );
+        <div id="root">`);
+    appStream.pipe(res, { end: false });
     appStream.on('end', () => {
         res.write(`</div>
-            <script>window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(
-                /</g,
-                '\\u003c'
-            )}</script>
-            <script src="bundle.js"></script></body>
-            </html>`
-        );
+            <script>window.__PRELOADED_STATE__ = ${JSON.stringify(
+                preloadedState
+            ).replace(/</g, '\\u003c')}</script>
+            <script src="/index.bundle.js"></script></body>
+            </html>`);
         res.end();
     });
-}
+};

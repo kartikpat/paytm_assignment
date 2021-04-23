@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { FILTERS } from '../constants';
+import { FILTERS } from '../../SpaceXLaunches/constants';
 import FilterPill from '../../UIComponents/FilterPill';
-import { onClickSelectFilter } from '../action';
+import { onClickSelectFilter } from '../../SpaceXLaunches/action';
 
 const Container = styled.div`
     display: flex;
@@ -73,5 +73,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onFilterPillClick: (id, value) => dispatch(onClickSelectFilter(id, value)),
 });
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);

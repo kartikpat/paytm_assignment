@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filter Pill changes the class when clicked 1`] = `
+<div
+  className="sc-AxjAm iYFFrh"
+  onClick={[Function]}
+  selected={false}
+>
+  Dummy Data
+</div>
+`;
+
+exports[`Filter Pill changes the class when clicked 2`] = `
+<div
+  className="sc-AxjAm iYFFrh"
+  onClick={[Function]}
+  selected={false}
+>
+  Dummy Data
+</div>
+`;
+
+exports[`Filter Pill changes the class when clicked 3`] = `
+<div
+  className="sc-AxjAm iYFFrh"
+  onClick={[Function]}
+  selected={false}
+>
+  Dummy Data
+</div>
+`;
