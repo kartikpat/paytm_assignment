@@ -7,14 +7,14 @@ const webpack = require('webpack');
 module.exports = {
     entry: {
         index: [
-            "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true",
+            'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true',
             './client/index.js',
-        ]
+        ],
     },
     output: {
         filename: '[name].bundle.js',
         path: path.resolve('build'),
-        publicPath: '/'
+        publicPath: '/',
     },
     mode: 'development',
     devtool: 'source-map',
@@ -24,13 +24,13 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader"
-                }
+                    loader: 'babel-loader',
+                },
             },
-        ]
+        ],
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new ReactRefreshWebpackPlugin()
-    ]
+        new ReactRefreshWebpackPlugin(),
+    ],
 };

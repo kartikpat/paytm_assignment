@@ -24,7 +24,7 @@ const Heading = styled.div`
 const Label = styled.div`
     font-size: 14px;
     text-align: center;
-    border-bottom: 1px solid #4C4C4C;
+    border-bottom: 1px solid #4c4c4c;
     padding: 10px 0;
     margin-bottom: 10px;
 `;
@@ -42,37 +42,54 @@ const ValueRow = styled.div`
 `;
 
 const Filter = ({ onFilterPillClick, selectedFilters }) => (
-  <Container>
-    <Heading>Filters</Heading>
-    {FILTERS.map((filter) => (
-      <div key={filter.id}>
-        <Label>{filter.label}</Label>
-        {filter.values.reduce((valueRows, key, index) => (index % 2 === 0
-          ? valueRows.push([key]) : valueRows[valueRows.length - 1].push(key)) && valueRows, [])
-          .map((valueRow, index) => (
-            <ValueRow key={index}>
-              {valueRow.map((value, id) => (
-                <FilterPill key={id} selected={selectedFilters[filter.id] ? selectedFilters[filter.id] === value : false} label={value} onClick={() => onFilterPillClick(filter.id, value)} />
-              ))}
-            </ValueRow>
-          ))}
-      </div>
-    ))}
-  </Container>
-
+    <Container>
+        <Heading>Filters</Heading>
+        {FILTERS.map((filter) => (
+            <div key={filter.id}>
+                <Label>{filter.label}</Label>
+                {filter.values
+                    .reduce(
+                        (valueRows, key, index) =>
+                            (index % 2 === 0
+                                ? valueRows.push([key])
+                                : valueRows[valueRows.length - 1].push(key)) &&
+                            valueRows,
+                        []
+                    )
+                    .map((valueRow, index) => (
+                        <ValueRow key={index}>
+                            {valueRow.map((value, id) => (
+                                <FilterPill
+                                    key={id}
+                                    selected={
+                                        selectedFilters[filter.id]
+                                            ? selectedFilters[filter.id] ===
+                                              value
+                                            : false
+                                    }
+                                    label={value}
+                                    onClick={() =>
+                                        onFilterPillClick(filter.id, value)
+                                    }
+                                />
+                            ))}
+                        </ValueRow>
+                    ))}
+            </div>
+        ))}
+    </Container>
 );
 
 Filter.propTypes = {
-  selectedFilters: PropTypes.arrayOf(PropTypes.object).isRequired,
+    selectedFilters: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  selectedFilters: state.spaceXLaunches.selectedFilters,
+    selectedFilters: state.spaceXLaunches.selectedFilters,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onFilterPillClick: (id, value) => dispatch(onClickSelectFilter(id, value)),
+    onFilterPillClick: (id, value) => dispatch(onClickSelectFilter(id, value)),
 });
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);

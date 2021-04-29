@@ -14,19 +14,19 @@ const Container = styled.div`
     margin: 0 auto;
     max-width: 1440px;
 
-    @media(min-width: 700px) {
+    @media (min-width: 700px) {
         flex-direction: row;
     }
 `;
 
 const Home = () => (
-  <>
-    <Heading>SpaceX Launch Programsssss</Heading>
-    <Container>
-      {/* <Filter /> */}
-      <SpaceXLaunches />
-    </Container>
-  </>
+    <>
+        <Heading>SpaceX Launch Programsssss</Heading>
+        <Container>
+            {/* <Filter /> */}
+            <SpaceXLaunches />
+        </Container>
+    </>
 );
 
 export default Home;

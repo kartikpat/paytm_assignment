@@ -11,5 +11,5 @@ const GlobalStyle = createGlobalStyle`
         font-family: Open-Sans, Helvetica, Sans-Serif;
     }
 `;
- 
+
 export default GlobalStyle;

@@ -12,13 +12,14 @@ module.exports = {
     mode: 'development',
     devtool: 'source-map',
     module: {
-        rules: [{
-                    test: /\.jsx?$/,
-                    exclude: /node_modules/,
-                    use: {
-                        loader: "babel-loader"
-                    }
+        rules: [
+            {
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
                 },
-            ]
-    }
+            },
+        ],
+    },
 };
