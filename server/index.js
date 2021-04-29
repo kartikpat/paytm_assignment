@@ -24,7 +24,7 @@ app.use(
         publicPath: webpackConfig.output.publicPath,
     })
 );
-app.use(require('webpack-hot-middleware')(compiler, { reload: true }));
+app.use(require('webpack-hot-middleware')(compiler));
 
 app.use((req, res) => {
     try {
