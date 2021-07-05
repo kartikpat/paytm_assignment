@@ -1,6 +1,8 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
+const IS_DEV = process.env.NODE_ENV === 'development';
+
 module.exports = {
     entry: './server/index.js',
     target: 'node',
@@ -9,7 +11,7 @@ module.exports = {
         path: path.resolve('build'),
         filename: 'serverBundle.js',
     },
-    mode: 'development',
+    mode: IS_DEV ? 'development' : 'production',
     devtool: 'source-map',
     module: {
         rules: [
@@ -22,4 +24,5 @@ module.exports = {
             },
         ],
     },
+    resolve: { extensions: ['.js', '.jsx'] },
 };

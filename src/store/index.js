@@ -1,12 +1,10 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import { rootReducer } from './utils/rootReducer';
+import { configureStore } from '@reduxjs/toolkit';
+import rootReducer from './utils/rootReducer';
 
 const createReduxStore = (preloadedState = {}) =>
-    createStore(
-        combineReducers(rootReducer),
+    configureStore({
+        reducer: rootReducer,
         preloadedState,
-        applyMiddleware(thunk)
-    );
-console.log('aa');
+    });
+
 export default createReduxStore;

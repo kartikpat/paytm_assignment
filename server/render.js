@@ -14,7 +14,7 @@ export default ({ appStream, title, preloadedState, res }) => {
             <script>window.__PRELOADED_STATE__ = ${JSON.stringify(
                 preloadedState
             ).replace(/</g, '\\u003c')}</script>
-            <script src="/index.bundle.js"></script></body>
+            <script src="/main.js"></script></body>
             </html>`);
         res.end();
     });

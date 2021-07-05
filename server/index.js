@@ -1,17 +1,17 @@
-const express = require('express');
-const webpack = require('webpack');
-const webpackConfig = require('../webpack/client-config');
-
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
 import { ServerStyleSheet } from 'styled-components';
 
 import App from '../src/app';
-import createStore from '../src/store';
+import createReduxStore from '../src/store';
 import routes from '../src/routes/index';
 import loadData from './loadData';
 import render from './render';
+
+const express = require('express');
+const webpack = require('webpack');
+const webpackConfig = require('../webpack/client-config');
 
 const PORT = process.env.PORT || 3006;
 const app = express();
@@ -24,12 +24,16 @@ app.use(
         publicPath: webpackConfig.output.publicPath,
     })
 );
-app.use(require('webpack-hot-middleware')(compiler));
+app.use(
+    require('webpack-hot-middleware')(compiler, {
+        reload: true,
+    })
+);
 
 app.use((req, res) => {
     try {
-        const store = createStore();
-        Promise.all(loadData({ path: req?.path, store, routes }))
+        const store = createReduxStore();
+        return Promise.all(loadData({ path: req?.path, store, routes }))
             .then(() => {
                 const sheet = new ServerStyleSheet();
 

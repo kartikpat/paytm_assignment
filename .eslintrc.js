@@ -1,4 +1,5 @@
 module.exports = {
+    parser: '@babel/eslint-parser',
     env: {
         browser: true,
         node: true,
@@ -7,6 +8,7 @@ module.exports = {
         amd: true,
     },
     extends: [
+        'airbnb',
         'eslint:recommended',
         'plugin:react/recommended',
         'plugin:jsx-a11y/recommended',
@@ -19,9 +21,17 @@ module.exports = {
             jsx: true,
         },
     },
-    plugins: ['react'],
     rules: {
-        'prettier/prettier': ['error', {}, { usePrettierrc: true }], // Use our .prettierrc file as source
+        'prettier/prettier': [
+            'error',
+            { usePrettierrc: true, endOfLine: 'auto' },
+        ],
+        'import/no-extraneous-dependencies': [
+            'error',
+            { devDependencies: true },
+        ],
+        'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+        'no-underscore-dangle': 'off',
     },
     settings: {
         react: {

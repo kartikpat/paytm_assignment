@@ -1,12 +1,12 @@
-import Home from '../containers/Home/index.jsx';
-import { getLaunches } from '../components/SpaceXLaunches/action';
+import { fetchCountries } from '../containers/CountriesList/slice';
+import Home from '../pages/Home/index';
 
 const Routes = [
     {
         path: '/',
         exact: true,
         component: Home,
-        loadData: (dispatch) => dispatch(getLaunches({})),
+        loadData: (dispatch) => dispatch(fetchCountries()),
     },
 ];
 
